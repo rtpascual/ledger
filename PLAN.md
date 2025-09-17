@@ -4,8 +4,8 @@ This document outlines the step-by-step plan to develop the Ledger application, 
 
 ## Phase 0: Project Setup
 
-- [ ] Create the directory structure for the `core`, `backend`, `frontend`, and `cli` modules.
-- [ ] Initialize a git repository.
+- [x] Create the directory structure for the `core`, `backend`, `frontend`, and `cli` modules.
+- [x] Initialize a git repository.
 
 ## Phase 1: Core Module
 
