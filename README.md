@@ -6,56 +6,14 @@ For a detailed explanation of the project's architecture, components, and design
 
 ## Usage
 
-There are two ways to use the Ledger application:
+Currently, only the `core` module is implemented. You can build it and use it as a library in other Java projects.
 
-*   **Web Application:** A user-friendly web interface for managing your finances.
-*   **Command-Line Interface (CLI):** A powerful command-line tool for advanced users.
-
-### Web Application
-
-To run the web application, you need to have Java and Node.js installed.
-
-1.  **Run the Backend:**
+1.  **Build the `core` module:**
     ```bash
-    cd backend
-    mvn spring-boot:run
+    cd core
+    mvn clean install
     ```
-    The backend API will be running at `http://localhost:8080`.
-
-2.  **Run the Frontend:**
-    In a new terminal window:
-    ```bash
-    cd frontend
-    npm install
-    npm start
-    ```
-    The web application will be available at `http://localhost:3000`.
-
-### Command-Line Interface (CLI)
-
-The CLI allows you to manage your ledger from the command line.
-
-1.  **Build the CLI:**
-    ```bash
-    cd cli
-    mvn clean package
-    ```
-
-2.  **Run Commands:**
-    Once built, you can run commands using the generated JAR file from the `cli` directory.
-
-    *   **View account balances:**
-        ```bash
-        java -jar target/cli-1.0-SNAPSHOT.jar balance
-        ```
-    *   **View recent transactions:**
-        ```bash
-        java -jar target/cli-1.0-SNAPSHOT.jar view
-        ```
-    *   **Add a transaction:**
-        ```bash
-        java -jar target/cli-1.0-SNAPSHOT.jar add
-        ```
+    This will install the `core` module as a JAR in your local Maven repository.
 
 ## Contributing
 

@@ -9,13 +9,13 @@ This document outlines the step-by-step plan to develop the Ledger application, 
 
 ## Phase 1: Core Module
 
-- [ ] **Setup Java Project:** Create a new Java project for the `core` module.
-- [ ] **Define POJOs:** Create the Plain Old Java Objects for `Transaction`, `Account`, and `Posting` in `com.ledger.core.model`.
-- [ ] **Implement DAO:**
-    - [ ] Define the `LedgerDao` interface in `com.ledger.core.dao`.
-    - [ ] Implement `LedgerDaoImpl` to handle read/write operations on the `.ledger` file.
-- [ ] **Unit Testing:** Write unit tests for the DAO and any business logic in the core module.
-- [ ] **Build:** Build the `core` module as a JAR file.
+- [x] **Setup Java Project:** Create a new Java project for the `core` module.
+- [x] **Define POJOs:** Create the Plain Old Java Objects for `Transaction`, `Account`, and `Posting` in `com.ledger.core.model`.
+- [x] **Implement DAO:**
+    - [x] Define the `LedgerDao` interface in `com.ledger.core.dao`.
+    - [x] Implement `LedgerDaoImpl` to handle read/write operations on the `.ledger` file.
+- [x] **Unit Testing:** Write unit tests for the DAO and any business logic in the core module.
+- [x] **Build:** Build the `core` module as a JAR file.
 
 ## Phase 2: Backend Module (Spring Boot)
 

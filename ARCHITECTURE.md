@@ -22,6 +22,8 @@ The application is designed with a modular architecture to promote code reuse an
 
 ### 2.1. High-Level Architecture
 
+**Note:** Currently, only the **Java Core** module is implemented. The other components are part of the planned architecture.
+
 ```
    +------------------+      +------------------+
    |   React Client   |----->|  Java REST API   |
@@ -41,10 +43,17 @@ The application is designed with a modular architecture to promote code reuse an
 
 ### 2.2. Core (Shared Java Logic)
 
-This module is the heart of the application and contains all the logic for handling the ledger data. It is a standard Java library (JAR) that can be included as a dependency in other modules.
+This module is the heart of the application. It is a standard Java library (JAR) responsible for all business logic and data handling. It is completely self-contained and has no knowledge of the web or CLI layers.
 
-*   **POJOs (Plain Old Java Objects):** Located in `com.ledger.core.model`, these represent the core domain objects like `Transaction`, `Account`, and `Posting`.
-*   **DAOs (Data Access Objects):** Located in `com.ledger.core.dao`, this layer abstracts the data persistence. The `LedgerDao` interface and its `LedgerDaoImpl` implementation handle all read/write operations to the `.ledger` file.
+*   **`model`:** Located in `com.rtpascual.ledger.core.model`, these are POJOs (Plain Old Java Objects) representing the core domain objects like `Transaction`, `Account`, and `Posting`. They are the internal, in-memory representation of the ledger data.
+
+*   **`dao`:** Located in `com.rtpascual.ledger.core.dao`, this layer abstracts the data source. The `LedgerDAO` interface and its implementation are responsible for **parsing the `.ledger` file** and creating the initial collection of `model` objects.
+
+*   **`store`:** Located in `com.rtpascual.ledger.core.store`, this acts as the in-memory "repository". The `AccountRegistry` holds all `Account` objects after they are loaded, ensuring a single, consistent instance of each account is used throughout the application.
+
+*   **`dto`:** Located in `com.rtpascual.ledger.core.dto`, these are Data Transfer Objects. They define the "external contract" for data leaving or entering the core module. They are simple data structures tailored for specific use cases, like API responses.
+
+*   **`mapper`:** Located in `com.rtpascual.ledger.core.mapper`, this layer contains translator components. The `TransactionMapper` converts objects between the `model` and `dto` layers, using the `store` to look up accounts when necessary.
 
 ### 2.3. Backend (Java/Spring REST API)
 
@@ -95,15 +104,19 @@ core/
     └── main/
         └── java/
             └── com/
-                └── ledger/
-                    └── core/
-                        ├── dao/          // Data Access Object interfaces and impls
-                        └── model/        // POJO domain models
+                └── rtpascual/
+                    └── ledger/
+                        └── core/
+                            ├── dao/          // Data Access: Parses the .ledger file.
+                            ├── dto/          // Data Transfer Objects: External data contracts.
+                            ├── mapper/       // Translators between DTOs and Models.
+                            ├── model/        // POJO domain models (the in-memory data).
+                            └── store/        // In-memory "repository" for accounts.
 ```
 
 ### 3.2. Backend (`/backend`)
 
-This directory contains the Spring Boot application. It will have a dependency on the `core` module.
+This directory is planned for the Spring Boot application.
 
 ```
 backend/
@@ -120,7 +133,7 @@ backend/
 
 ### 3.3. Frontend (`/frontend`)
 
-This directory contains the React web application.
+This directory is planned for the React web application.
 
 ```
 frontend/
@@ -136,7 +149,7 @@ frontend/
 
 ### 3.4. CLI (`/cli`)
 
-This directory contains the Picocli command-line application. It will have a dependency on the `core` module.
+This directory is planned for the Picocli command-line application.
 
 ```
 cli/

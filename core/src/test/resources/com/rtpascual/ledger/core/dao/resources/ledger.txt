@@ -1,0 +1,11 @@
+2024-07-29 Coffee Shop
+    Expenses:Coffee    $5.00
+    Assets:Checking
+
+2024-07-30 Supermarket
+    Expenses:Groceries    $150.00
+    Assets:Checking
+
+2024-07-31 Gas Station
+    Expenses:Gas    $45.00
+    Assets:Checking

@@ -24,59 +24,14 @@ Before you begin, ensure you have the following installed:
 
 Follow these steps to get the application running locally.
 
-### 1. Build the Core Module
+### Build the Core Module
 
-First, you need to build the `core` module and install it into your local Maven repository. This will make it available as a dependency for the `backend` and `cli` modules.
+First, you need to build the `core` module and install it into your local Maven repository. This will make it available as a dependency for the other modules when they are created.
 
 ```bash
 cd core
 mvn clean install
 cd ..
-```
-
-### 2. Run the Backend (REST API)
-
-Next, start the Spring Boot backend server.
-
-```bash
-cd backend
-mvn spring-boot:run
-```
-
-The API will be available at `http://localhost:8080`.
-
-### 3. Run the Frontend (Web UI)
-
-In a separate terminal, install the frontend dependencies and start the development server.
-
-```bash
-cd frontend
-npm install
-npm start
-```
-
-The web application will be available at `http://localhost:3000`.
-
-### 4. Use the CLI
-
-To use the command-line interface, you first need to build the executable JAR.
-
-```bash
-cd cli
-mvn clean package
-```
-
-Once built, you can run commands using the generated JAR file from the `cli` directory.
-
-```bash
-# Example: View account balances
-java -jar target/cli-1.0-SNAPSHOT.jar balance
-
-# Example: View recent transactions
-java -jar target/cli-1.0-SNAPSHOT.jar view
-
-# Example: Add a transaction (will prompt for details)
-java -jar target/cli-1.0-SNAPSHOT.jar add
 ```
 
 ## Submitting a Pull Request
